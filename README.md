@@ -1,0 +1,2 @@
+# Jurnal
+Penyimpanan Script Jurnal
