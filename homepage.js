@@ -12,7 +12,7 @@ $(function () {
     			  filter: '.filter'	
     		  },
     		  load: {
-      		  filter: '.app, .card, .icon, .logo, .web, .kosong'  
+      		  filter: '.all'  
       		}     
 				});								
 			
@@ -48,4 +48,8 @@ $(document).ready(function(){
         $("html, body").animate({ scrollTop: 0 }, 600);
         return false;
     });
+});
+$('#ojs').click(function(e) {
+     doSomething();
+     return false;
 });
