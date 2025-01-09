@@ -53,3 +53,13 @@ $('#ojs').click(function(e) {
      doSomething();
      return false;
 });
+// Cari elemen <li> yang memiliki anak <a> dengan href tertentu
+const listItems = document.querySelectorAll('li > a[href="https://journal.walisongo.ac.id/index.php/economica/search"]');
+
+// Loop melalui hasil dan sembunyikan elemen <li>
+listItems.forEach(anchor => {
+    const parentLi = anchor.parentElement;
+    if (parentLi) {
+        parentLi.style.display = 'none';
+    }
+});
