@@ -1,0 +1,834 @@
+/* Global Styles */
+html {
+    color: #000000;
+}
+.fixed-action-btn {
+    display: none;
+}
+body {
+    background-color: white;
+}
+/*Membuat menu navigasi lebar memenuhi layar ken kanan*/
+.navbar .nav.navbar-nav {
+    width: 100%;
+    /* Membuat lebar penuh */
+    display: flex;
+    /* Mengatur item menjadi fleksibel */
+    justify-content: space-between;
+    /* Mengatur jarak antar-item */
+}
+/*Menambah kata NEW Pada Announcement di Navigasi Utama */
+/* Special styling for the 'new-item' */
+.menu-item-350 {
+    position: relative;
+}
+.menu-item-350::after {
+    content: "NEW";
+    position: absolute;
+    top: -10px;
+    /* Posisikan di atas tombol */
+    right: -5px;
+    /* Posisikan agak ke kanan */
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 15px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: blink 1s infinite;
+    /* Tambahkan animasi blink */
+}
+/* Animasi berkedip */
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+        /* Simbol terlihat penuh */
+    }
+    50% {
+        opacity: 0;
+        /* Simbol menghilang sementara */
+    }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-item-350::after {
+        font-size: 9px;
+        /* Ukuran simbol lebih kecil */
+        top: -8px;
+        /* Penyesuaian posisi untuk layar kecil */
+        right: -3px;
+        padding: 2px 5px;
+    }
+}
+@media (max-width: 480px) {
+    .menu-item-350::after {
+        font-size: 8px;
+        /* Simbol lebih kecil lagi */
+        top: -6px;
+        /* Penyesuaian posisi untuk layar sangat kecil */
+        right: -2px;
+        padding: 1px 4px;
+    }
+}
+/*Mengubah CSS Pada Halaman Submission*/
+.alert.alert-info {
+    color: white;
+    background: linear-gradient(45deg, #24218E, #5A5AD1);
+    border: none;
+    /* Opsional: untuk menghilangkan border bawaan */
+}
+.alert.alert-info a {
+    color: white;
+    text-decoration: underline;
+    /* Opsional: untuk membedakan link */
+}
+.alert.alert-info a:hover {
+    color: #d1d1f5;
+    /* Opsional: warna saat hover untuk link */
+    text-decoration: none;
+    /* Opsional: efek hover tanpa garis bawah */
+}
+/*Membuat ARTICLE SUMMARY MEDIA phenomenon ada rotating colorful borders*/
+/* Define variables and keyframes for rotating gradient */
+@property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes border-angle-rotate {
+    from {
+        --border-angle: 0deg;
+    }
+    to {
+        --border-angle: 360deg;
+    }
+}
+/* Styling for article-summary media with full-width */
+.article-summary.media {
+    --border-angle: 0deg;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 4px hsl(0 0% 0% / 25%);
+    animation: border-angle-rotate 2s infinite linear;
+    border: 1px solid transparent;
+    /* Changed from 0.5rem to 1px */
+    position: relative;
+    background: linear-gradient(white, white) padding-box,
+        conic-gradient(from var(--border-angle),
+            oklch(100% 100% 0deg),
+            oklch(100% 100% 45deg),
+            oklch(100% 100% 90deg),
+            oklch(100% 100% 135deg),
+            oklch(100% 100% 180deg),
+            oklch(100% 100% 225deg),
+            oklch(100% 100% 270deg),
+            oklch(100% 100% 315deg),
+            oklch(100% 100% 360deg)) border-box;
+}
+/* Variation for circular design */
+.article-summary.media.c {
+    width: 100%;
+    border-radius: 100%;
+    background: radial-gradient(circle, var(--bg) 60%, transparent 60%);
+    position: relative;
+    /* Inner rotating borders */
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 4px;
+        border-radius: 100%;
+        animation: border-angle-rotate 4s infinite linear;
+        z-index: -1;
+    }
+    /* Outer border animation */
+    &:before {
+        inset: 0;
+        background: repeating-conic-gradient(from var(--border-angle),
+                var(--bg),
+                var(--bg) 30deg,
+                oklch(100% 50% 190deg) calc(360deg / 6)) border-box;
+    }
+    /* Inner border animation */
+    &:after {
+        background: repeating-conic-gradient(from calc(var(--border-angle) * -1),
+                oklch(100% 40% 50deg),
+                black 60deg) border-box;
+    }
+}
+/*Memindahkan abstract views dan pdf download ke kanan tombol PDF*/
+.btn-group {
+    margin-bottom: 10px;
+    /* Beri jarak dengan elemen di bawahnya */
+}
+.meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* Agar elemen meta menyesuaikan lebar */
+}
+.meta .fa-signal,
+.meta .fa-download {
+    margin-left: 10px;
+    /* Jarak antar elemen */
+}
+.meta span {
+    margin-left: auto;
+    /* Memindahkan Abstract Views dan PDF Download ke kanan */
+}
+/*Icon signal warna warni*/
+.glyphicon.glyphicon-signal {
+    font-size: 1.5em;
+    /* Ukuran ikon */
+    color: #ff0000;
+    /* Warna awal */
+    animation: rainbowSignal 2s infinite linear;
+    /* Animasi warna */
+}
+/* Keyframes untuk warna-warni */
+@keyframes rainbowSignal {
+    0% {
+        color: #ff0000;
+        /* Merah */
+    }
+    20% {
+        color: #ffa500;
+        /* Oranye */
+    }
+    40% {
+        color: #ffff00;
+        /* Kuning */
+    }
+    60% {
+        color: #008000;
+        /* Hijau */
+    }
+    80% {
+        color: #0000ff;
+        /* Biru */
+    }
+    100% {
+        color: #4b0082;
+        /* Ungu */
+    }
+}
+/* Efek hover */
+.glyphicon.glyphicon-signal:hover {
+    transform: scale(1.3);
+    /* Perbesar ikon */
+    transition: transform 0.2s ease;
+}
+.glyphicon.glyphicon-download-alt {
+    font-size: 1.5em;
+    /* Ukuran ikon */
+    color: #008000;
+    /* Warna awal */
+    animation: rainbowDownload 2.5s infinite linear;
+    /* Animasi warna */
+}
+/* Keyframes untuk warna-warni */
+@keyframes rainbowDownload {
+    0% {
+        color: #008000;
+        /* Hijau */
+    }
+    20% {
+        color: #0000ff;
+        /* Biru */
+    }
+    40% {
+        color: #4b0082;
+        /* Ungu */
+    }
+    60% {
+        color: #ff0000;
+        /* Merah */
+    }
+    80% {
+        color: #ffa500;
+        /* Oranye */
+    }
+    100% {
+        color: #ffff00;
+        /* Kuning */
+    }
+}
+/* Efek hover */
+.glyphicon.glyphicon-download-alt:hover {
+    transform: rotate(15deg) scale(1.3);
+    /* Rotasi dan pembesaran */
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+/*Membuat Header full width di semua layar dan perangkat*/
+.header {
+    width: 100%;
+    /* Full width of the screen */
+    overflow: hidden;
+    /* Prevent overflow */
+}
+.header a {
+    display: block;
+}
+.header-img {
+    width: 100%;
+    /* Ensure full width */
+    height: auto;
+    /* Maintain aspect ratio by default */
+    object-fit: cover;
+    /* Stretch image when screen exceeds image size */
+}
+/*Style untuk logo WhatsApp di footer bagian kanan*/
+/* Wrapper untuk tombol Chat Us */
+.icon-wrapper {
+    position: fixed;
+    /* Tetap di pojok kanan bawah */
+    bottom: 20px;
+    /* Jarak dari bawah halaman */
+    right: 20px;
+    /* Jarak dari kanan halaman */
+    display: inline-block;
+    width: 80px;
+    /* Ukuran ikon */
+    height: auto;
+    text-align: center;
+    /* Pusatkan isi */
+    cursor: pointer;
+    /* Tambahkan kursor pointer */
+    z-index: 1000;
+    /* Pastikan tombol berada di atas elemen lain */
+}
+/* Wrapper untuk teks */
+.chat-text-wrapper {
+    display: flex;
+    /* Buat teks dalam satu baris */
+    justify-content: center;
+    /* Pusatkan teks secara horizontal */
+    gap: 5px;
+    /* Tambahkan jarak antar kata */
+    margin-bottom: 5px;
+    /* Jarak antara teks dan ikon */
+}
+/* Teks Chat Us */
+.chat-text {
+    color: white;
+    /* Warna teks */
+    font-size: 14px;
+    /* Ukuran teks */
+    font-weight: bold;
+    /* Teks tebal */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    /* Efek teks lebih jelas */
+}
+/* Gambar WhatsApp */
+.icon-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    /* Membuat gambar bulat */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Sedikit bayangan agar terlihat jelas */
+}
+/* Hover efek */
+.icon-wrapper:hover img {
+    opacity: 0.9;
+    /* Sedikit perubahan opasitas pada hover */
+}
+/* Style for the WhatsApp icon */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #25D366;
+    /* WhatsApp green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.whatsapp-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+/* Responsive design */
+@media (max-width: 768px) {
+    .whatsapp-icon {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+.navbar,
+.header_view {
+    border: 1px solid #4642c3 !important;
+}
+/* Ubah background judul ketika pdf di klik dan letaknya biar di atas*/
+.header_view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    border: 1px solid #4642c3;
+    animation: glowing-border 2s infinite;
+    background: #4642c3;
+}
+/*Hilangkan logo OJS*/
+img.img-responsive {
+    display: none;
+}
+/*Ubah Warna Link di Semua OJS*/
+a {
+    color: #24218E;
+    /* Warna utama link */
+    text-decoration: none;
+    /* Menghilangkan garis bawah link jika diperlukan */
+}
+a:hover {
+    color: #1F1C76;
+    /* Warna sedikit lebih gelap untuk efek hover */
+    text-decoration: underline;
+    /* Menambahkan garis bawah saat hover untuk aksesibilitas */
+}
+a:focus {
+    color: #3A38B2;
+    /* Warna sedikit lebih terang untuk fokus */
+    outline: 2px dashed #24218E;
+    /* Memberikan outline fokus untuk aksesibilitas */
+}
+/* Main and Block Title Styling with Reduced Size and Adjusted Padding */
+#main,
+.blockTitle {
+    display: block;
+    background: linear-gradient(135deg, #24218E, #5A5AD1);
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.2rem;
+    font-family: 'Georgia', serif;
+    margin: -10px -10px 10px -10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    letter-spacing: 0.8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.blockTitle:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+/* Side Menu Styling with Elegant Animations */
+.sidemenu li {
+    background: #f0f8ff;
+    border-bottom: 1px solid #1a73e8;
+    margin: -5px -5px 10px -5px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.sidemenu li:hover {
+    background: linear-gradient(135deg, #e0f2ff, #cfe8ff);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    border-bottom-color: #24218E;
+}
+.sidemenu li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #1a73e8, transparent);
+    transition: transform 0.5s ease, background-color 0.5s ease;
+    transform: translateX(-100%);
+}
+.sidemenu li:hover::before {
+    transform: translateX(0);
+    background-color: rgba(26, 115, 232, 0.2);
+}
+/* Header/Logo Title */
+.header {
+    padding: 0px;
+}
+/* Styling for container */
+.container-fluid {
+    background-color: #24218E;
+}
+/* Menu background color */
+#nav-menu {
+    background-color: #24218E;
+}
+/* Animasi search bar */
+.form-control {
+    transition: transform 0.3s ease;
+}
+/* Efek hover dengan zoom out */
+.form-control:hover {
+    transform: scale(0.95);
+    border-color: #fc0303;
+}
+/* Ubah warna tombol search */
+.btn.btn-default {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+/* Hover effect to change color to earthy tones */
+.btn.btn-default:hover {
+    background-color: #fc0303;
+    color: #000000;
+    border-color: #fc0303;
+}
+/* Badge styling */
+#main-navigation.nav.navbar-nav .badge {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 12px;
+    margin-left: 5px;
+}
+/* Caret styling */
+#main-navigation.nav.navbar-nav .caret {
+    margin-left: 5px;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #main-navigation.nav.navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #main-navigation.nav.navbar-nav li {
+        margin: 10px 0;
+    }
+}
+/*Manipulasi Submission Block*/
+.block_make_submission_link {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.block_make_submission_link:hover {
+    background-color: #357a38;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    color: #fff;
+}
+/* Hover effect for the send button */
+#wa-widget-send-button:hover {
+    background-color: #357a38;
+}
+/* Styling for footer */
+footer:hover {
+    transform: scale(0.95);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Transisi halus untuk transformasi dan bayangan */
+}
+/* Membuat gambar ketika disentuh membesar */
+/* Styling untuk gambar */
+img.zoom-effect {
+    transition: transform 0.3s ease;
+    /* Transisi halus untuk efek zoom */
+}
+/* Efek zoom in saat di-hover */
+img.zoom-effect:hover {
+    transform: scale(1.2);
+    /* Membesarkan gambar sebesar 20% saat di-hover */
+}
+/* Mengatur Lebar Navigasi */
+/* Styling untuk elemen dengan ID main-navigation */
+#main-navigation {
+    box-sizing: border-box;
+    /* Menjamin padding tidak mempengaruhi lebar total elemen */
+    /* padding: 0 15px; */
+    /* Padding horizontal (kiri dan kanan) */
+    width: 60%;
+    /* Memastikan lebar elemen 100% dari kontainer induknya */
+    /* Atur padding vertikal sesuai kebutuhan jika perlu */
+}
+/* Membuat gambar Profil Editor in Chief ketika disentuh membesar */
+/* Styling untuk gambar */
+img.zoom-effecteic {
+    transition: transform 0.3s ease;
+    /* Transisi halus untuk efek zoom */
+}
+/* Efek zoom in saat di-hover */
+img.zoom-effecteic:hover {
+    transform: scale(2.0);
+    /* Membesarkan gambar sebesar 20% saat di-hover */
+}
+/* Tombol jadi lebih besar */
+/* Styling untuk tombol dengan efek zoom */
+.btn.btn-primary.read-more {
+    transition: transform 0.3s ease;
+    /* Transisi halus untuk efek zoom */
+}
+/* Efek zoom in saat di-hover */
+.btn.btn-primary.read-more:hover {
+    transform: scale(1.5);
+    /* Membesarkan tombol sebesar 20% saat di-hover */
+}
+/* PDF Galley */
+.galley-link.btn.btn-primary.pdf {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #4CAF50, #2196F3);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out, background-size 0.5s ease-in-out;
+    background-size: 200% 200%;
+    font-size: 16px;
+    font-weight: bold;
+}
+.galley-link.btn.btn-primary.pdf:hover {
+    transform: scale(1.2);
+    background-position: right;
+}
+/* Loading-like gradient animation */
+.galley-link.btn.btn-primary.pdf {
+    background: linear-gradient(270deg, #4CAF50, #2196F3, #FF9800, #F44336);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+}
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* Menambah Hover di setiap Link */
+a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+a:hover {
+    transform: scale(1.05);
+}
+/* Ganti warna teks tag <p> ketika di blok */
+p {
+    /* Warna teks default */
+    color: black;
+}
+/* Mengubah warna teks saat disorot (diblok) */
+p::selection {
+    background-color: yellow;
+    /* Warna latar belakang saat teks disorot */
+    color: black;
+    /* Warna teks saat disorot */
+}
+/* Ganti warna teks tag <strong> ketika di blok */
+strong {
+    /* Warna teks default */
+    color: black;
+}
+/* Mengubah warna teks saat disorot (diblok) */
+strong::selection {
+    background-color: yellow;
+    /* Warna latar belakang saat teks disorot */
+    color: black;
+    /* Warna teks saat disorot */
+}
+/* Gaya default untuk .authors, .csl-entry, th, dan td */
+.authors,
+.csl-entry,
+th,
+td {
+    color: black;
+    /* Warna teks default */
+}
+/* Mengubah warna teks saat disorot (diblok) */
+.authors::selection,
+.csl-entry::selection,
+th::selection,
+td::selection {
+    background-color: yellow;
+    /* Warna latar belakang saat teks disorot */
+    color: black;
+    /* Warna teks saat disorot */
+}
+/* Memastikan link doi tidak nabrak div */
+/* Style for links to ensure they wrap and don't overflow */
+.list-group-item.doi a {
+    word-break: break-word;
+    /* Break long words */
+    overflow-wrap: break-word;
+    /* Break long words to fit within container */
+    display: inline-block;
+    /* Prevent links from extending full width */
+    max-width: 100%;
+    /* Prevent the link from extending beyond the container */
+    text-decoration: none;
+    /* Optional: Remove underline from links */
+    color: #007bff;
+    /* Optional: Change link color */
+}
+/* Optional: Style strong tags if needed */
+.list-group-item.doi strong {
+    display: block;
+    /* Ensure strong element is on its own line */
+    margin-bottom: 5px;
+    /* Add space below the strong tag */
+}
+/* Membuat header h1 judul tiap artikel menjadi lebih kecil */
+.page-header {
+    font-size: 2.3rem;
+    /* Mengatur ukuran font menjadi 4 kali lebih besar */
+    line-height: 1.2;
+    /* Menjaga jarak baris agar tidak terlalu rapat */
+    margin: 20px 0;
+    /* Menambahkan margin atas dan bawah untuk jarak dari elemen lain */
+    padding: 0 0 5px 0;
+    /* Menambahkan padding bawah sebesar 5px */
+    text-align: left;
+    /* Menyelaraskan teks ke kiri */
+}
+/* Membuat abstrak menjadi rata kanan kiri */
+.article-abstract {
+    text-align: justify;
+    /* Menyelaraskan teks dengan rata kiri dan kanan */
+    margin: 0;
+    /* Atur margin sesuai kebutuhan */
+    padding: 0px;
+    /* Menambahkan padding jika diperlukan */
+}
+/* Menghilangkan Search di Navigasi OJS*/
+.navbar-form.navbar-left {
+    display: none;
+}
+/* Menghilangkan Author Biography */
+.item.author_bios {
+    display: none;
+}
+/* Daftar Pustaka */
+.article-references {
+    text-align: justify;
+    /* Menyelaraskan teks dengan rata kiri dan kanan */
+    margin: 0;
+    /* Atur margin sesuai kebutuhan */
+    padding: 0px;
+    /* Menambahkan padding jika diperlukan */
+}
+/* Gradien Body menjadi timbul */
+.media-body {
+    background: linear-gradient(145deg, #f7f9f9, #ffffff);
+    /* Gradien untuk efek kedalaman */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2), -8px -8px 15px rgba(255, 255, 255, 0.7);
+    /* Bayangan untuk efek 3D */
+    border-radius: 10px;
+    /* Membuat sudut elemen lebih halus */
+    padding: 20px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Animasi halus pada hover */
+}
+.media-body:hover {
+    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.3), -12px -12px 20px rgba(255, 255, 255, 0.8);
+    /* Bayangan lebih kuat pada hover */
+    transform: translateY(-5px);
+    /* Sedikit mengangkat elemen pada hover untuk efek dinamis */
+}
+/*CSS Halaman Editorial Team*/
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+}
+h4 {
+    color: #24218E;
+    /* Updated color for h4 */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #24218E;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.editorial-section {
+    margin-bottom: 40px;
+}
+.person-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.person-card:hover {
+    transform: translateY(-5px);
+}
+.person-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.person-details {
+    padding: 10px;
+    flex: 1;
+}
+.person-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+.person-info {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0 0 0;
+}
+.icons {
+    margin-top: 5px;
+}
+.icons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+/*CSS untuk mengubah tabel di Home Page*/
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+tr:hover {
+    background-color: #ebf5fb;
+}
